@@ -1,0 +1,26 @@
+from tkinter import *
+from tkinter import messagebox
+import sqlite3
+win=Tk()
+win.title("registration")
+win.geometry('600x500')
+Fullname=StringVar()
+Email=StringVar()
+def Database():
+    name=Fullname.get()
+    email=Email.get()
+    con=sqlite3.connect("db1.db")
+    curs=con.cursor()
+    curs.execute("CREATE TABLE STUDENT (fullname TEXT,eml TEXT )")
+    curs.execute("INSERT INTO STUDENT(fullname,eml) VALUES (?,?)",(name,email))
+    con.commit()
+    win.destroy()
+    messagebox.showinfo('Done','Good work! successfully Registered.')
+    curs.execute("SELECT * FROM STUDENT;")
+    print(curs.fetchone())
+l1=Label(win,text="Fullname").place(x=80,y=130)
+e1=Entry(win,textvar=Fullname,width=20).place(x=240,y=130)
+l2=Label(win,text="Email").place(x=68,y=180)
+e2=Entry(win,textvar=Email,width=20).place(x=240,y=180)
+btn=Button(win,text="Register",width=20,bg='brown',fg='white',command=Database).place(x=180,y=380)
+win.mainloop()

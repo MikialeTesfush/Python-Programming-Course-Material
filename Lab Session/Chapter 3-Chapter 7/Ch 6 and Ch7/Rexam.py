@@ -1,0 +1,17 @@
+import tkinter
+from tkinter.ttk import *
+window = tkinter.Tk()
+window.title("Login Page")
+window.geometry('500x300')
+tkinter.Label(window, text = "Username").grid(row = 0)
+tkinter.Entry(window,width=30).grid(row = 0, column = 1)
+tkinter.Label(window, text = "Password").grid(row = 1)
+tkinter.Entry(window,width=30).grid(row = 1, column = 1)
+tkinter.Checkbutton(window, text = "Remember Me").place(relx=0.8, rely=0.8, anchor=tkinter.CENTER)
+button=tkinter.Button(window,text="Login",font='bold',bg='black',fg="white").place(relx=0.4, rely=0.8, anchor=tkinter.CENTER)
+combo=Combobox(window)
+tkinter.Label(window, text = "Address").place(relx=0.07, rely=0.2, anchor=tkinter.CENTER)
+combo['values']=("Harar","Jijiga","Dire Dawa","Chiro","Hirna","Adama")
+combo.current(0)
+combo.place(relx=0.3, rely=0.2, anchor=tkinter.CENTER)
+window.mainloop()
